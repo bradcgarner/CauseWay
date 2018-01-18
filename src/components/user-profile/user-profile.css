@@ -1,0 +1,49 @@
+.userProfile {
+    width: 100%;
+    max-width: 700px;
+  }
+
+.userProfileHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.userProfileLogo {
+  max-height: 100px;
+}
+.userProfileName {
+  text-align: center;
+}
+.userProfileInner { /*inner div, activated link, holds all content*/
+    padding: 10px 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+}
+.profileSectionHeaders {
+  text-align: center;
+}
+.addAdminMessage{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.addAdminSearchBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.adminInputField {
+  display: flex;
+  flex: 1;
+  padding: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

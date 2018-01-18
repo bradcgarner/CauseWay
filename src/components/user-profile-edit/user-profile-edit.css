@@ -1,0 +1,17 @@
+.addLinkContainerWithHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+.absolutePosPlus {
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+
+.spacedForm {
+  padding-top: 30px;
+}

@@ -1,0 +1,11 @@
+.landingPage h2 {
+  text-align: center;
+}
+.landingPage .appDescription {
+  margin-bottom: 25px;
+  text-align: justify;
+}
+.descriptionContainer {
+  width: 100%;
+  max-width: 540px;
+}

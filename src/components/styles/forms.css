@@ -1,0 +1,109 @@
+.inputField, .rw-widget-container {
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 3px;
+  border: 1px solid #adbace;
+}
+.inputField { /* padding done to get to align with .rw-widgets... */
+  padding-top: 4.5px;
+  padding-bottom: 6.5px;
+  padding-right: 3px;
+  padding-left: 8px;
+}
+.locationCity { /* padding done to get to align with .rw-widgets... */
+  padding-top: 5px;
+  padding-bottom: 7.5px;
+}
+.inputField:focus {
+  outline: none;
+  border-color: rgb(99, 172, 241);
+  box-shadow: 0 0 2px rgb(99, 172, 241);
+}
+.rw-widget {
+  font-size: 12px;
+}
+.labelInputPair {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.labelInputPair .inputLabel {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+  width: 100px;
+}
+.labelInputPair .inputField,
+.labelInputPair .rw-widget
+ {
+  display: flex;
+  flex: 1;
+}
+.spacedForm .labelInputPair {
+  margin-bottom: 10px;
+}
+.spacedForm .previewBottomBar {
+  margin-top: 20px;
+}
+.formGroupSubHeader {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.linksContainer {
+  align-items: flex-end;
+  margin-bottom: 0px;
+}
+.spacedForm .linksContainer,
+.spacedForm .linkFieldContainer {
+  margin-bottom: 0px;
+}
+.editLinkButton {
+  margin-left: 10px;
+  padding-bottom: 8px;
+}
+.rw-calendar-popup {
+  width: 28em;
+}
+.rw-calendar-header,
+.rw-calendar-footer {
+  width: 6em;
+}
+.rw-calendar-transition-group {
+  width: 16em;
+}
+.rw-datetime-picker #rw_5_input, 
+.rw-datetime-picker #rw_6_input, 
+.rw-datetime-picker #rw_8_input,
+.rw-datetime-picker #rw_9_input,
+.rw-datetime-picker .rw-widget-input {
+  display: none;
+}
+.rw-datetime-picker .rw-btn:not(.rw-btn-primary) {
+  width: 50%;
+}
+.rw-datetime-picker .rw-widget-picker {
+  width: 60px;
+}
+.datetimepickerRow {
+  position: relative;
+}
+.datetimeDisplayContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.datetimeDisplay {
+  margin: 0;
+}
+/* currently, 0:30 minutes aren't working, so hide them */
+.datetimepickerRow .rw-list .rw-list-option:nth-child(even) {
+  display: none;
+}

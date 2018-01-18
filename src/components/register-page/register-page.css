@@ -1,0 +1,18 @@
+.registerForm {
+  padding: 5% 10%;
+}
+@media (min-width: 450px) {
+  .registerForm {
+    padding: 10% 20%;
+  }
+}
+.registerForm .selectOptionButtonContainer {
+  margin-bottom: 20px;
+}
+.registerForm .submitButtonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}

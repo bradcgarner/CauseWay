@@ -1,0 +1,65 @@
+.modalContainer, .loadingContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modalBackground, .loadingBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.modalBackground {
+  background-color: #333;
+  opacity: 0.5;
+}
+.loadingBackground {
+  background-color: #ddd;
+  opacity: 0.2;
+}
+.modalPanel {
+  position: relative;
+  background-color: white;
+  outline: none;
+  border: 2px solid black;
+  box-shadow: 0 0 4px #DA2536;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modalMessage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.modalExitButton {
+  color: #DA2536;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.loadingIcon {
+  font-size: 120px;
+  opacity: 0.6;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

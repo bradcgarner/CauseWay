@@ -38,6 +38,7 @@ button:hover {
   background-color: #eb293c;
   color: #eee;
 }
+
 .responseButton {
   margin-bottom: 10px;
 }
@@ -59,5 +60,10 @@ button:hover {
 }
 .deSelectedOptionLabel {
   background-color: rgba(8, 46, 65, 0.1);
+  color: #082E41;
+}
+
+.deSelectedOptionLabel:hover {
+  background-color: rgba(8, 46, 65, 0.2);
   color: #082E41;
 }

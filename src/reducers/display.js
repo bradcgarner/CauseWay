@@ -15,7 +15,8 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === actions.TOGGLE_MODAL) {
-    return {...state, modal: !state.modal, modalMessage: action.message };
+    const modalMessage = typeof action.modalMessage === 'string' ? action.modalMessage : action.modalMessage.toString();
+    return {...state, modal: !state.modal, modalMessage };
   }
 
   if (action.type === actions.SET_USER) {

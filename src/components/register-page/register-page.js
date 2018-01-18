@@ -23,7 +23,8 @@ export class RegisterPage extends Component {
   }
 
   handleSubmitButton(input) {
-    this.props.dispatch(actionsUser.createOrEditUser(input))
+    const userToPost = {...input, userType: this.state.formType};
+    this.props.dispatch(actionsUser.createOrEditUser(userToPost))
       .then(() => {
         this.props.history.push(`/profiles/${this.props.display.userId}`)
       })

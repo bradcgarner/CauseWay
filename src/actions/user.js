@@ -65,6 +65,12 @@ export const loadResponse = response => ({
   response,
 });
 
+export const LOAD_RESPONSE_TO_USER = 'LOAD_RESPONSE_TO_USER';
+export const loadResponseToUser = response => ({
+  type: LOAD_RESPONSE_TO_USER,
+  response,
+});
+
 export const LOAD_ADMIN = 'LOAD_ADMIN';
 export const loadAdmin = admin => ({
   type: LOAD_ADMIN,
@@ -95,7 +101,6 @@ export const userAPICall = (url, init, body, callback) => dispatch => {
   return fetch(url, init)   
   .then(user=>{ 
     if (!user.ok) { 
-      dispatch(actionsDisplay.toggleModal('Sorry, user not recognized'));
       return Promise.reject(user.statusText);
     }
     return user.json();
@@ -130,9 +135,9 @@ export const userAPICall = (url, init, body, callback) => dispatch => {
     return dispatch(actionsDisplay.changeDisplayStatus('normal'));
   })
   .catch(error => {
-    // console.log('error',error);
+    console.log('error',error);
     dispatch(actionsDisplay.changeDisplayStatus('normal'));
-    return dispatch(actionsDisplay.toggleModal(error));
+    return dispatch(actionsDisplay.toggleModal('sorry, user not found'));
   })
 }
 
@@ -238,10 +243,6 @@ export const createOrEditResponse = (origResponse, authToken, isNew = true) => d
   const {id, idOpportunity, userId, notes, responseStatus} = response; // send back only keys that server expects
   const newResponse = {id, idOpportunity, userId, notes, responseStatus};
   if (isNew) delete response.id;
-
-  // console.log('orig', origResponse)
-  // console.log('response', response)
-  // console.log('newResponse', newResponse)
   
   const url = `${REACT_APP_BASE_URL}/api/responses/${params}`;
   const headers = { 
@@ -279,6 +280,7 @@ export const createOrEditResponse = (origResponse, authToken, isNew = true) => d
     if ( loadTo === 'user') {
       dispatch(loadResponse(returnedResponse)); // if user is logged in, update them (they will be updated when logging in otherwise)
     } else {
+      dispatch(loadResponseToUser(returnedResponse)); // otherwise, update the user who owns this opportunity
       dispatch(actionsOpportunity.loadOppResponse(returnedResponse)); // otherwise, update the opportunity in focus
     }
     return dispatch(actionsDisplay.changeDisplayStatus('normal'));

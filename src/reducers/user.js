@@ -1,5 +1,6 @@
 import * as actions from '../actions/user'
 import {user as initialState} from './potential-states'
+import response from '../components/response/response';
 // import deepAssign from 'deep-assign';
 
 // this is all detail for 1 user (individual OR organization); we should only need one at a time;
@@ -65,6 +66,19 @@ export const reducer = (state = initialState, action) => {
   if (action.type === actions.LOAD_RESPONSE) {
     const newResponses = {...state.responses, [action.response.idOpportunity]: action.response};
     return {...state, responses: newResponses };
+  }
+
+  if (action.type === actions.LOAD_RESPONSE_TO_USER) {
+    const responses = state.opportunities[action.response.idOpportunity].responses ?
+      [...state.opportunities[action.response.idOpportunity].responses] : [] ;
+    let responseIndex = 0;
+    responses.forEach((response, index)=>{
+      if (response.id === action.response.id) responseIndex = index;
+    });
+    responses[responseIndex] = action.response;
+    const opportunity = {...state.opportunities[action.response.idOpportunity], responses};
+    const opportunities = {...state.opportunities, [action.response.idOpportunity]: opportunity};
+    return {...state, opportunities };
   }
 
   if (action.type === actions.LOAD_ADMIN) {

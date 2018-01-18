@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './response.css';
 import * as actionsDisplay from '../../actions/display';
+import * as actionsUser from '../../actions/user';
 import * as helpers from '../../actions/helpers';
 
 export class Acceptance extends Component {
@@ -22,7 +23,13 @@ export class Acceptance extends Component {
 
   handleSubmit(values){
     console.log('submitting');
-    this.props.dispatch(actionsDisplay.toggleResponse(values))
+    const responseStatus = this.state.accepted ?'accepted' : 'denied' ;
+    const newResponse = {...this.props.response, responseStatus};
+    const isNew = false;
+    this.props.dispatch(actionsUser.createOrEditResponse(newResponse, this.props.user.authToken, isNew))
+      .then(() => {
+        this.props.dispatch(actionsDisplay.toggleResponse(values))     
+      });
   }
 
   render() {

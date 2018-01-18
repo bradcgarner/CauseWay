@@ -16,7 +16,7 @@ export class OpportunitiesPage extends Component {
 
   render() {
 
-    const redirect = this.props.user.id ? '' :
+    const redirect = this.props.user.id ? null :
     <Switch><Redirect from='*' to='/' /></Switch>
 
     let listOfOpps = <p>Sorry, we can't find the list of opportunites. Please try back.</p>;

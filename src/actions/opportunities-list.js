@@ -29,7 +29,7 @@ export const fetchOppsList = (query, authToken) => dispatch => {
   
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
 
-  const url = new URL(`${REACT_APP_BASE_URL}/api/opportunities/list`);
+  const url = new URL(`${REACT_APP_BASE_URL}/api/opportunities`);
   Object.keys(query).forEach(key => url.searchParams.append(key, query[key]));
   
   const headers = {

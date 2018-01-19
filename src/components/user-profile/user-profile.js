@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './user-profile.css';
 import OpportunityPreview from '../opportunity-preview/opportunity-preview';
@@ -24,6 +25,9 @@ export class UserProfile extends Component {
   }
 
   render() {
+
+    const redirect = (this.props.user.id || this.props.userViewed.id) ? null :
+      <Switch><Redirect from='*' to='/' /></Switch>
 
     let self, user, opportunityHeader, responseHeader, followingHeader, adminsHeader, adminOfHeader, userFollow;
     if (this.props.display.idUser === this.props.user.id) {
@@ -199,6 +203,7 @@ export class UserProfile extends Component {
 
     return (
       <main>
+        {redirect}
         {userProfile}
         {adminOf}
         {opportunities}

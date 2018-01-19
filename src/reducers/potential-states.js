@@ -128,9 +128,9 @@ export const opportunity = {
 };
 
 export const opportunitiesList = {
-  main: [
+  //main: [
     // array of opportunities, sans responses
-  ]
+  //]
 };
 
 export const display = {

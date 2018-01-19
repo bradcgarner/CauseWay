@@ -16,8 +16,8 @@ export class OpportunitiesPage extends Component {
 
   render() {
 
-    const redirect = this.props.user.id ? null :
-    <Switch><Redirect from='*' to='/' /></Switch>
+    const redirect = (this.props.user.id || this.props.opportunitiesList.main) ? null :
+     <Switch><Redirect from='*' to='/' /></Switch>
 
     let listOfOpps = <p>Sorry, we didn't find any matching opportunities. Please try again.</p>;
     if (this.props.opportunitiesList) {

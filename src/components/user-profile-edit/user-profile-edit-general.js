@@ -72,6 +72,7 @@ export class UserEditGeneralForm extends Component {
 
     const redirect = this.props.user.id ? '' : <Switch><Redirect from='*' to='/' /></Switch>
     const nameForm = this.props.user.userType === 'individual' ? <IndivNameFields /> : <OrgNameFields />;
+    const logoLabel = this.props.user.userType === 'individual' ? 'Headshot URL' : 'Logo URL' ;
 
     let myLinks;
       if (this.state.links.length >0) {
@@ -132,7 +133,7 @@ export class UserEditGeneralForm extends Component {
         <div className='labelInputPair'>
           <label
             className='inputLabel'
-            htmlFor={'logo'}>Logo URL
+            htmlFor={'logo'}>{logoLabel}
           </label>
           <Field
             name='logo'

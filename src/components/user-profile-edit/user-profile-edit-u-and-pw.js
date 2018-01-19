@@ -11,6 +11,10 @@ import UandPwFields from '../fields/u-and-pw';
 export class UserEditUandPwForm extends Component {
   
   handleSubmitButton(user) {
+    if(user.username === 'sampleuser') {
+      this.props.dispatch(actionsDisplay.toggleModal('sorry, but we need to keep sampleuser\'s username and password as-is'));
+      return;
+    }
     const isNew = false;
     this.props.dispatch(actionsUser.createOrEditUser(user, this.props.initialValues.authToken, isNew))
     .then(() => {

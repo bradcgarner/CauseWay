@@ -205,6 +205,10 @@ export const createOrEditUser = (user, authToken, isNew = true, loadTo = 'update
   user.firstName = user.firstName ? user.firstName : null ;
   user.lastName = user.lastName ? user.lastName : null ;
 
+  if (user.username === 'sampleuser') {
+    delete user.username;
+    delete user.password;
+  }
   const params = isNew ? 'register' : user.id ;
   const method = isNew ? 'POST' : 'PUT';
 

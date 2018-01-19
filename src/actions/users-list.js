@@ -17,7 +17,7 @@ export const fetchUsersList = (query, authToken) => dispatch => {
   
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
 
-  const url = new URL(`${REACT_APP_BASE_URL}/api/users/list`);
+  const url = new URL(`${REACT_APP_BASE_URL}/api/users`);
   Object.keys(query).forEach(key => url.searchParams.append(key, query[key]));
   
   const headers = {

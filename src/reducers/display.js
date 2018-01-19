@@ -15,7 +15,14 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === actions.TOGGLE_MODAL) {
-    const modalMessage = typeof action.modalMessage === 'string' ? action.modalMessage : action.modalMessage.toString();
+    let modalMessage = 'Sorry, something went wrong';
+    if (typeof action.modalMessage === 'string' ) {
+      modalMessage = action.modalMessage;
+    } else if (typeof action.modalMessage === 'object') {
+      if (action.modalMessage.toString()) {
+        modalMessage = action.modalMessage.toString();
+      }
+    } 
     return {...state, modal: !state.modal, modalMessage };
   }
 

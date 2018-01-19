@@ -1,7 +1,5 @@
 import * as actions from '../actions/user'
 import {user as initialState} from './potential-states'
-import response from '../components/response/response';
-// import deepAssign from 'deep-assign';
 
 // this is all detail for 1 user (individual OR organization); we should only need one at a time;
 // this would be used when creating, editing, or viewing YOUR OWN profile
@@ -96,11 +94,5 @@ export const reducer = (state = initialState, action) => {
     return {...state, following: newFollowing };
   }
 
-  // if (action.type === actions.SET_FORM_TYPE) {
-  //   return {...state, formType: action.formType};
-  // }
-  
   return state;
-
-
 }

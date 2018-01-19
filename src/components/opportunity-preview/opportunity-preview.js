@@ -28,7 +28,7 @@ export class OpportunityPreview extends Component {
     const causes = helpers.formatCausesIcon(opportunity.causes, opportunity);
 
     const isInFocus = this.props.display.idOpportunity === opportunity.id ? true : false ;
-    const isMyOpportunity = (opportunity.idUser === this.props.user.id || this.props.self) ? true : false;
+    const isMyOpportunity = ((opportunity.idUser === this.props.user.id && !this.props.response)|| this.props.self) ? true : false;
     
     const displayNameTitle = isMyOpportunity ? <h3 className='previewCardTitle'>This is my event!</h3> : <h3 className='previewCardTitle'>{this.props.opportunity.organization}</h3>
     
@@ -36,13 +36,6 @@ export class OpportunityPreview extends Component {
     if (isInFocus && opportunity.narrative) {
       narrative = <p className='previewCardText oppNarrative'>{opportunity.narrative}</p>;
     } 
-    // else if (opportunity.narrative) {
-    //   if (opportunity.narrative.length > 100) {
-    //     narrative = <p className='previewCardText oppNarrative'>{opportunity.narrative.substring(0,90)}...</p>;
-    //   } else {
-    //   narrative = <p className='previewCardText oppNarrative'>{opportunity.narrative}</p>;
-    //   }
-    // }
     const requiredSkills = (isInFocus && opportunity.requiredSkills) ? <h4 className='previewCardText oppRequiredSkills'>{opportunity.requiredSkills}</h4> : null ;
     
     const formattedTimeframe = helpers.formatTimeframe(opportunity);

@@ -33,7 +33,7 @@ export class LandingPage extends Component {
     const howTo = !this.state.howTo ? null :
       <div className='appDescription'>
         <ul>
-          <li><span className='liEmphasis'>Sign Up</span> : Click 'sign up' at the bottom of the screen, or use this <span className='sampleAccountLink' onClick={()=>this.props.dispatch(actionsUser.login({username:'sampleuser', password:'sampleuser'}))}>sample account</span> for a test drive.</li>
+          <li><span className='liEmphasis'>Sign Up</span> : Click 'sign up' at the bottom of the screen, or use this <span className='sampleAccountLink' onClick={()=>this.props.dispatch(actionsUser.login({username:'sampleuser2', password:'sampleuser2'}))}>sample account</span> for a test drive.</li>
           <li><span className='liEmphasis'>See Who's Here</span> : After signing in, look for 'organizations' or 'contributors' at the bottom of the screen.</li>
           <li><span className='liEmphasis'>See How You Can Contribute</span> : After signing in, look for a briefcase 'opportunities' icon at the top left of screen to see all the ways you can get involved.</li>
           <li><span className='liEmphasis'>Lend A Hand!</span> Click the red 'sign up' button on any opportunity. You can also send a note or question to the host.</li>

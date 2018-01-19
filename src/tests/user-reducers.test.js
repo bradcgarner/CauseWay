@@ -115,7 +115,7 @@ describe('reducer - single user', () => {
       opportunities: {  
         88: {
           id: 88,
-          userId: '',
+          idUser: '',
           organization: '',
           opportunityType: '',
           offer: '',
@@ -135,7 +135,7 @@ describe('reducer - single user', () => {
           id: 67,
           idOpportunity: '',
           organization: '', 
-          userId: '',
+          idUser: '',
           firstName: '', 
           lastName: 'last name in response', 
           responseStatus: '',
@@ -156,7 +156,7 @@ describe('reducer - single user', () => {
       id: 54,
       idOpportunity: 88,
       organization: 'Healthcare For The Homeless',
-      userId: 72,
+      idUser: 72,
       firstName: 'Janet',
       lastName: 'Smythe',
       responseStatus: 'accepted',

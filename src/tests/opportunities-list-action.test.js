@@ -28,7 +28,7 @@ describe('actions - opportunities list', () => {
     const arrayOfOpportunities = [
       {
         id: 1,
-        userId: 2,
+        idUser: 2,
         opportunityType: 'services',
         offer: false,
         title: 'Take a Senior Shopping!',
@@ -43,7 +43,7 @@ describe('actions - opportunities list', () => {
       },
       {
         id: 2,
-        userId: 7,
+        idUser: 7,
         opportunityType: 'goods',
         offer: false,
         title: 'Canned Vegetables Needed',
@@ -62,7 +62,7 @@ describe('actions - opportunities list', () => {
       main: [
         {
           id: 1,
-          userId: 2,
+          idUser: 2,
           opportunityType: 'services',
           offer: false,
           title: 'Take a Senior Shopping!',
@@ -77,7 +77,7 @@ describe('actions - opportunities list', () => {
         },
         {
           id: 2,
-          userId: 7,
+          idUser: 7,
           opportunityType: 'goods',
           offer: false,
           title: 'Canned Vegetables Needed',

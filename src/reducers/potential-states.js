@@ -53,7 +53,7 @@ export const user = {
   opportunities: {  
     0: {
       id: '',
-      userId: '',      
+      idUser: '',      
       organization: '', 
       opportunityType: '',
       offer: '',
@@ -74,7 +74,7 @@ export const user = {
       id: '',
       idOpportunity: '',
       organization: '',
-      userId: '',
+      idUser: '',
       firstName: '', 
       lastName: '', 
       responseStatus: '',
@@ -95,7 +95,7 @@ export const usersList = {
   
 export const opportunity = {
   id: '',
-  userId: '',
+  idUser: '',
   organization: '',
   opportunityType: '',
   offer: '',
@@ -114,7 +114,7 @@ export const opportunity = {
     0: {
         id: '',
         idOpportunity: '',
-        userId: '',
+        idUser: '',
         notes: '',
         responseStatus: '',
         timestampStatusChange: '',
@@ -138,8 +138,8 @@ export const display = {
   status: 'normal',    // loading
   modal: false,
   modalMessage: '',
-  userId: '',          // user in focus
-  roleUserId: '',      // user whose role is in focus
+  idUser: '',          // user in focus
+  roleIdUser: '',      // user whose role is in focus
   idRole: '',          // role in focus
   idResponse: '',
   idOpportunity: '',

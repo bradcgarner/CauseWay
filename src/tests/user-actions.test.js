@@ -126,7 +126,7 @@ describe('plain actions - single user', () => {
       opportunities: {
         355: {
           id: 355,
-          userId: '',
+          idUser: '',
           organization: '', 
           opportunityType: '',
           offer: '',
@@ -146,7 +146,7 @@ describe('plain actions - single user', () => {
           id: 67,
           idOpportunity: '',
           organization: '',
-          userId: '',
+          idUser: '',
           firstName: 'Dan',
           lastName: 'Wriggle', 
           responseStatus: '',
@@ -166,7 +166,7 @@ describe('plain actions - single user', () => {
       id: 54,
       idOpportunity: 88,
       organization: 'Healthcare For The Homeless',
-      userId: 72,
+      idUser: 72,
       firstName: 'Janet',
       lastName: 'Smythe',
       responseStatus: 'accepted',
@@ -407,15 +407,15 @@ describe('user action async functions', () => {
   it('should fetch 1 user from server and load user in state', () => {
     
     cumulativeActions += 2;
-    const userId = 6976897854655; // doesn't matter for testing
+    const idUser = 6976897854655; // doesn't matter for testing
     const stateLocation = 'user' // other option is 'orgs'
-    const expectedResponse = {id: userId}; // this will be the response of the mock call
+    const expectedResponse = {id: idUser}; // this will be the response of the mock call
     const authToken = '';
     
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, JSON.stringify(expectedResponse))));
               
-    return store.dispatch(actionsUser.fetchUser(userId, authToken, stateLocation))
+    return store.dispatch(actionsUser.fetchUser(idUser, authToken, stateLocation))
       .then(() => {
         const expectedActions = store.getActions();
         // console.log('expectedActions user',expectedActions)
@@ -429,14 +429,14 @@ describe('user action async functions', () => {
 
   it('should fetch 1 user from server and load user in state (argument default)', () => {
     cumulativeActions += 2;
-    const userId = 77654433333338; // doesn't matter for testing
-    const expectedResponse = {id: userId}; // this will be the response of the mock call
+    const idUser = 77654433333338; // doesn't matter for testing
+    const expectedResponse = {id: idUser}; // this will be the response of the mock call
     const authToken = '';
     
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, JSON.stringify(expectedResponse))));
               
-    return store.dispatch(actionsUser.fetchUser(userId, authToken))
+    return store.dispatch(actionsUser.fetchUser(idUser, authToken))
       .then(() => {
         const expectedActions = store.getActions();
         // console.log('expectedActions user',expectedActions)
@@ -450,15 +450,15 @@ describe('user action async functions', () => {
 
   it('should fetch 1 user from server and load as userViewed in state', () => {
     cumulativeActions += 2;
-    const userId = 11222112236; // doesn't matter for testing
+    const idUser = 11222112236; // doesn't matter for testing
     const stateLocation = 'userViewed' // other option is 'orgs'
-    const expectedResponse = {id: userId}; // this will be the response of the mock call
+    const expectedResponse = {id: idUser}; // this will be the response of the mock call
     const authToken = '';
     
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, JSON.stringify(expectedResponse))));
               
-    return store.dispatch(actionsUser.fetchUser(userId, authToken, stateLocation))
+    return store.dispatch(actionsUser.fetchUser(idUser, authToken, stateLocation))
       .then(() => {
         const expectedActions = store.getActions();
         // console.log('expectedActions userViewed',expectedActions)
@@ -473,7 +473,7 @@ describe('user action async functions', () => {
 
   it('should fetch 1 user from server and toggle modal', () => {
     cumulativeActions += 2;
-    const userId = 7343578689; // doesn't matter for testing
+    const idUser = 7343578689; // doesn't matter for testing
     const stateLocation = 'user' // other option is 'orgs'
     const expectedResponse = {error: 'error'}; // this will be the response of the mock call
     const authToken = '';
@@ -481,7 +481,7 @@ describe('user action async functions', () => {
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.reject(mockResponse(500, 'ERROR', JSON.stringify(expectedResponse))));
               
-    return store.dispatch(actionsUser.fetchUser(userId, authToken, stateLocation))
+    return store.dispatch(actionsUser.fetchUser(idUser, authToken, stateLocation))
       .then(() => {
         const expectedActions = store.getActions();
         // console.log('expectedActions fail user',expectedActions)
@@ -500,8 +500,8 @@ describe('user action async functions', () => {
   it('should login 1 user and load user in state', () => {
     cumulativeActions += 2;
     const user = {username: 'username', password: 'password'};
-    const userId = 888767656457;
-    const expectedResponse = {id: userId}; // this will be the response of the mock call
+    const idUser = 888767656457;
+    const expectedResponse = {id: idUser}; // this will be the response of the mock call
     
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, JSON.stringify(expectedResponse))));
@@ -553,11 +553,11 @@ describe('user action async functions', () => {
       firstName: 'firstName',
       lastName: 'lastName',
     };
-    const userId = 1234598767;
+    const idUser = 1234598767;
     const isNew = true;
     const authToken = undefined;
 
-    const expectedResponse = {id: userId}; // this will be the response of the mock call
+    const expectedResponse = {id: idUser}; // this will be the response of the mock call
     
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, JSON.stringify(expectedResponse))));
@@ -584,11 +584,11 @@ describe('user action async functions', () => {
       firstName: 'firstName',
       lastName: 'lastName',
     };
-    const userId = 7657745634;
+    const idUser = 7657745634;
     const isNew = true;
     const authToken = undefined;
 
-    const expectedResponse = {id: userId}; // this will be the response of the mock call
+    const expectedResponse = {id: idUser}; // this will be the response of the mock call
     
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, JSON.stringify(expectedResponse))));
@@ -614,11 +614,11 @@ describe('user action async functions', () => {
       firstName: 'firstName',
       lastName: 'lastName',
     };
-    const userId = 714324234;
+    const idUser = 714324234;
     const isNew = false;
     const authToken = 'XXX';
 
-    const expectedResponse = {id: userId}; // this will be the response of the mock call
+    const expectedResponse = {id: idUser}; // this will be the response of the mock call
     
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, JSON.stringify(expectedResponse))));
@@ -668,11 +668,11 @@ describe('user action async functions', () => {
       links,
       authToken: '',
     };
-    const userId = 763663543;
+    const idUser = 763663543;
     const index = 1;
     const action = 'edit';
 
-    const expectedResponse = {id: userId}; // this will be the response of the mock call
+    const expectedResponse = {id: idUser}; // this will be the response of the mock call
     
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, JSON.stringify(expectedResponse))));
@@ -706,7 +706,7 @@ describe('user action async functions', () => {
       id: 856756788679,
       idOpportunity: 9,
       organization: 'a',
-      userId: 7,
+      idUser: 7,
       firstName: 'b', 
       lastName: 'c', 
       responseStatus: 'offered',
@@ -715,7 +715,7 @@ describe('user action async functions', () => {
       timestampCreated: '',
       notes: '',
     };
-    const userId = 7;
+    const idUser = 7;
     const isNew = true;
     const authToken = 'XXX';
 
@@ -742,7 +742,7 @@ describe('user action async functions', () => {
       id: 863563546,
       idOpportunity: 9,
       organization: 'a',
-      userId: 7,
+      idUser: 7,
       firstName: 'b', 
       lastName: 'c', 
       responseStatus: 'offered',
@@ -751,7 +751,7 @@ describe('user action async functions', () => {
       timestampCreated: '',
       notes: '',
     };
-    const userId = 7;
+    const idUser = 7;
     const authToken = 'XXX';
 
     const expectedResponse = response; // this will be the response of the mock call
@@ -777,7 +777,7 @@ describe('user action async functions', () => {
       id: 8978,
       idOpportunity: 9,
       organization: 'a',
-      userId: 7,
+      idUser: 7,
       firstName: 'b', 
       lastName: 'c', 
       responseStatus: 'deleted',
@@ -786,7 +786,7 @@ describe('user action async functions', () => {
       timestampCreated: '',
       notes: '',
     };
-    const userId = 7;
+    const idUser = 7;
     const isNew = false;
     const authToken = 'XXX';
 
@@ -813,7 +813,7 @@ describe('user action async functions', () => {
       id: 8324,
       idOpportunity: 9,
       organization: 'a',
-      userId: 7,
+      idUser: 7,
       firstName: 'b', 
       lastName: 'c', 
       responseStatus: 'accepted',
@@ -822,7 +822,7 @@ describe('user action async functions', () => {
       timestampCreated: '',
       notes: '',
     };
-    const userId = 7;
+    const idUser = 7;
     const isNew = false;
     const authToken = 'XXX';
 
@@ -849,7 +849,7 @@ describe('user action async functions', () => {
       id: 88656,
       idOpportunity: 9,
       organization: 'a',
-      userId: 7,
+      idUser: 7,
       firstName: 'b', 
       lastName: 'c', 
       responseStatus: 'denied',
@@ -858,7 +858,7 @@ describe('user action async functions', () => {
       timestampCreated: '',
       notes: '',
     };
-    const userId = 7;
+    const idUser = 7;
     const isNew = false;
     const authToken = 'XXX';
 
@@ -885,7 +885,7 @@ describe('user action async functions', () => {
       id: 88656,
       idOpportunity: 9,
       organization: 'a',
-      userId: 7,
+      idUser: 7,
       firstName: 'b', 
       lastName: 'c', 
       responseStatus: 'denied',
@@ -894,7 +894,7 @@ describe('user action async functions', () => {
       timestampCreated: '',
       notes: '',
     };
-    const userId = 7;
+    const idUser = 7;
     const isNew = false;
     const authToken = 'XXX';
 

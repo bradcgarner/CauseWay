@@ -31,7 +31,7 @@ describe('actions - single opportunity', () => {
   it('should create action to load single opportunity', () => {
     const opportunity = {
       id: 1,
-      userId: 2,
+      idUser: 2,
       organization: 'ABC Group',
       opportunityType: 'services',
       offer: false,
@@ -61,7 +61,7 @@ describe('actions - single opportunity', () => {
       id: 54,
       idOpportunity: 88,
       organization: 'Healthcare For The Homeless',
-      userId: 72,
+      idUser: 72,
       firstName: 'Janet',
       lastName: 'Smythe',
       responseStatus: 'accepted',
@@ -133,7 +133,7 @@ describe('actions - single opportunity', () => {
 
     const opp = {
       id: 333445566,
-      userId: 22334,      
+      idUser: 22334,      
       organization: 'a', 
       opportunityType: 'b',
       offer: 'offer for...',
@@ -171,7 +171,7 @@ describe('actions - single opportunity', () => {
 
     const opp = {
       id: 33344225566,
-      userId: 22334,      
+      idUser: 22334,      
       organization: 'a', 
       opportunityType: 'b',
       offer: 'notAnOffer',
@@ -209,7 +209,7 @@ describe('actions - single opportunity', () => {
 
     const opp = {
       id: 33344588566,
-      userId: 22334,      
+      idUser: 22334,      
       organization: 'a', 
       opportunityType: 'b',
       offer: {notAString: 'notAnOffer'},
@@ -251,7 +251,7 @@ describe('actions - single opportunity', () => {
 
     const opp = {
       id: 33344556446,
-      userId: 22334,      
+      idUser: 22334,      
       organization: 'a', 
       opportunityType: 'b',
       offer: {notAString: 'notAnOffer'},
@@ -269,7 +269,7 @@ describe('actions - single opportunity', () => {
           id: 234,
           idOpportunity: 456,
           organization: 'a',
-          userId: 9874,
+          idUser: 9874,
           firstName: 'b', 
           lastName: 'c', 
           responseStatus: 'offered',
@@ -308,7 +308,7 @@ describe('actions - single opportunity', () => {
 
     const opp = {
       id: 33344556446,
-      userId: 22334,      
+      idUser: 22334,      
       organization: 'a', 
       opportunityType: 'b',
       offer: {notAString: 'notAnOffer'},

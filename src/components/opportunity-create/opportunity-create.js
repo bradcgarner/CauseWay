@@ -31,7 +31,7 @@ export class OpportunityCreate extends Component {
     const timestampEnd = this.props.opportunity.newTimestampEnd || opp.timestampEnd;
     opp.timestampStart = helpers.convertTimeStampToString(timestampStart);
     opp.timestampEnd = helpers.convertTimeStampToString(timestampEnd);
-    opp.userId = isNew ? this.props.user.id : opp.userId;
+    opp.idUser = isNew ? this.props.user.id : opp.idUser;
     this.props.dispatch(actionsOpportunity.createOpportunity(opp, this.props.user.authToken, isNew))
       .then(() => {
         this.props.dispatch(actionsDisplay.setOpportunity(null));
@@ -218,7 +218,7 @@ export const mapStateToProps = state => {
   const initialForm = { ...state.opportunity }
   delete initialForm.responses;
   delete initialForm.organization;
-  initialForm.userId = initialForm.userId ? initialForm.userId : state.user.id;
+  initialForm.idUser = initialForm.idUser ? initialForm.idUser : state.user.id;
   initialForm.causes = initialForm.causes ? initialForm.causes : null;
 
   return {

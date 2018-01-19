@@ -26,7 +26,7 @@ export class UserProfile extends Component {
   render() {
 
     let self, user, opportunityHeader, responseHeader, followingHeader, adminsHeader, adminOfHeader, userFollow;
-    if (this.props.display.userId === this.props.user.id) {
+    if (this.props.display.idUser === this.props.user.id) {
       self = true;
       user = this.props.user;
       opportunityHeader = 'My Opportunities';

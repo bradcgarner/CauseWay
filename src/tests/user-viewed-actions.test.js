@@ -125,7 +125,7 @@ describe('actions - user viewed', () => {
       opportunities: {
         355: {
           id: 355,
-          userId: '',
+          idUser: '',
           organization: '', 
           opportunityType: '',
           offer: '',
@@ -145,7 +145,7 @@ describe('actions - user viewed', () => {
           id: 67,
           idOpportunity: '',
           organization: '',
-          userId: '',
+          idUser: '',
           firstName: 'Dan',
           lastName: 'Wriggle', 
           responseStatus: '',

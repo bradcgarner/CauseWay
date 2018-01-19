@@ -143,11 +143,11 @@ export const userAPICall = (url, init, body, callback) => dispatch => {
 
 // @@@@@@@@@@@@@@@ ASYNC HEADER/URL FORMATTING @@@@@@@@@@@@@@@@@
 
-export const fetchUser = (userId, authToken, stateLocation = 'user', loadTo = 'updateUser') => dispatch => {   // state location options = 'user' and 'userViewed'
+export const fetchUser = (idUser, authToken, stateLocation = 'user', loadTo = 'updateUser') => dispatch => {   // state location options = 'user' and 'userViewed'
 
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
   
-  const url = `${REACT_APP_BASE_URL}/api/users/${userId}`;
+  const url = `${REACT_APP_BASE_URL}/api/users/${idUser}`;
   const headers = {
     'content-type': 'application/json',
     'Authorization': `Bearer ${authToken}`, 
@@ -240,8 +240,8 @@ export const createOrEditResponse = (origResponse, authToken, isNew = true) => d
   const params = isNew ? '' : response.id ;
   const method = isNew ? 'POST' : 'PUT';
 
-  const {id, idOpportunity, userId, notes, responseStatus} = response; // send back only keys that server expects
-  const newResponse = {id, idOpportunity, userId, notes, responseStatus};
+  const {id, idOpportunity, idUser, notes, responseStatus} = response; // send back only keys that server expects
+  const newResponse = {id, idOpportunity, idUser, notes, responseStatus};
   if (isNew) delete response.id;
   
   const url = `${REACT_APP_BASE_URL}/api/responses/${params}`;

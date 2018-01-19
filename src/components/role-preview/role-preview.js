@@ -38,11 +38,11 @@ export class RolePreview extends Component {
     })
   }
 
-  selectRole(id, userId) {
+  selectRole(id, idUser) {
     if (this.props.roleType === 'adminOf') {
       alert('coming soon!')
     } else {
-      this.props.dispatch(actionsDisplay.toggleRole(id, userId));
+      this.props.dispatch(actionsDisplay.toggleRole(id, idUser));
       this.props.reset();
     }
   }
@@ -169,7 +169,7 @@ export const mapStateToProps = state => ({
   general: state.general,
   display: state.display,
   enableReinitialize: true,
-  initialValues: state.user.admins[state.display.roleUserId]
+  initialValues: state.user.admins[state.display.roleIdUser]
 })
 
 export default compose(

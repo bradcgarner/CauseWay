@@ -416,7 +416,7 @@ paths:
                   properties:
                     id:
                       type: integer
-                    userId:
+                    idUser:
                       type: string
                     organization:
                       type: string
@@ -454,7 +454,7 @@ paths:
                       type: integer
                     idOpportunity:
                       type: integer
-                    userId:
+                    idUser:
                       type: integer
                     notes:
                       type: string
@@ -628,10 +628,10 @@ paths:
         in: query
         description: searches title for substring of parameter
         required: false
-      - name: userId
+      - name: idUser
         type: string
         in: query
-        description: searches for exact match of userId
+        description: searches for exact match of idUser
         required: false
       - name: narrative
         type: string
@@ -699,7 +699,7 @@ paths:
               properties:
                 id:
                   type: integer
-                userId:
+                idUser:
                   type: string
                 organization:
                   type: string
@@ -750,7 +750,7 @@ paths:
           schema:
             type: object
             properties:
-              userId:
+              idUser:
                 type: string
               organization:
                 type: string
@@ -787,7 +787,7 @@ paths:
             properties:
               id:
                 type: integer
-              userId:
+              idUser:
                 type: string
               organization:
                 type: string
@@ -842,7 +842,7 @@ paths:
             properties:
               id:
                 type: integer
-              userId:
+              idUser:
                 type: string
               organization:
                 type: string
@@ -880,7 +880,7 @@ paths:
                       type: integer
                     idOpportunity:
                       type: integer
-                    userId:
+                    idUser:
                       type: integer
                     notes:
                       type: string
@@ -1160,7 +1160,7 @@ paths:
             properties:
               idOpportunity:
                 type: integer
-              userId:
+              idUser:
                 type: integer
               notes:
                 type: string
@@ -1175,7 +1175,7 @@ paths:
                 type: integer
               idOpportunity:
                 type: integer
-              userId:
+              idUser:
                 type: integer
               notes:
                 type: string
@@ -1211,7 +1211,7 @@ paths:
                 type: integer
               idOpportunity:
                 type: integer
-              userId:
+              idUser:
                 type: integer
               notes:
                 type: string
@@ -1229,7 +1229,7 @@ paths:
                 type: integer
               idOpportunity:
                 type: integer
-              userId:
+              idUser:
                 type: integer
               notes:
                 type: string
@@ -1364,7 +1364,7 @@ definitions:
     description: opportunity table encompasses users of any type (offer to meet needs, request to meet needs). Primitive values are stored in SQL database (id-bio, below). Arrays (links-following, below) are saved in join tables and are only added to the user object via SQL join on fetch.
     required:
     - id
-    - userId
+    - idUser
     - organization
     - opportunityType
     - offer
@@ -1376,7 +1376,7 @@ definitions:
         type: integer
         format: serial
         example: 1
-      userId:
+      idUser:
         type: string
         example: bobsmith
       organization:
@@ -1437,7 +1437,7 @@ definitions:
       idOpportunity:
         type: integer
         description: the owner of the opportunity can be found via the opportunity; the owner's id is not saved in the response.
-      userId:
+      idUser:
         type: integer
         description: this is the user who responded to the opportunity
       notes:

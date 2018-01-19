@@ -27,7 +27,7 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === actions.SET_USER) {
-    return {...state, userId: action.userId };
+    return {...state, idUser: action.idUser };
   }
 
   if (action.type === actions.TOGGLE_OPPORTUNITY) {
@@ -42,8 +42,8 @@ export const reducer = (state = initialState, action) => {
   
   if (action.type === actions.TOGGLE_ROLE) {
     const idRole = state.idRole === action.idRole ? null : action.idRole ;
-    const roleUserId = state.roleUserId === action.roleUserId ? null : action.roleUserId ;
-    return {...state, idRole, roleUserId };
+    const roleIdUser = state.roleIdUser === action.roleIdUser ? null : action.roleIdUser ;
+    return {...state, idRole, roleIdUser };
   }
 
   if (action.type === actions.SAVE_LATEST_ROLE) {

@@ -115,7 +115,7 @@ describe('reducer - user viewed', () => {
       opportunities: {  
         88: {
           id: 88,
-          userId: '',
+          idUser: '',
           organization: '',
           opportunityType: '',
           offer: '',
@@ -135,7 +135,7 @@ describe('reducer - user viewed', () => {
           id: 67,
           idOpportunity: '',
           organization: '', 
-          userId: '',
+          idUser: '',
           firstName: '', 
           lastName: 'last name in response', 
           responseStatus: '',

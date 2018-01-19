@@ -33,12 +33,12 @@ describe('actions - display', () => {
   });
 
   it('should create an action to toggle the user in focus', () => {
-    const userId = 8776688;
+    const idUser = 8776688;
     const expectedDisplay = {
       type: actions.TOGGLE_USER,
-      userId
+      idUser
     }
-    const result = actions.toggleUser(userId);
+    const result = actions.toggleUser(idUser);
     expect(result).toEqual(expectedDisplay)
   });
 

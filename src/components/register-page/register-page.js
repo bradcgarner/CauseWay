@@ -26,7 +26,7 @@ export class RegisterPage extends Component {
     const userToPost = {...input, userType: this.state.formType};
     this.props.dispatch(actionsUser.createOrEditUser(userToPost))
       .then(() => {
-        this.props.history.push(`/profiles/${this.props.display.userId}`)
+        this.props.history.push(`/profiles/${this.props.display.idUser}`)
       })
   }
 

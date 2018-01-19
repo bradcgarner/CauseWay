@@ -214,7 +214,7 @@ export const getUsersIdRes = {
   "opportunities": [
     {
       "id": 0,
-      // "userId": "string",
+      // "idUser": "string",
       // "organization": "string",
       "opportunityType": "string",
       "offer": true,
@@ -235,7 +235,7 @@ export const getUsersIdRes = {
     {
       "id": 0,
       "idOpportunity": 0,
-      "userId": 0,
+      "idUser": 0,
       "notes": "free-form text",
       "responseStatus": "offered || accepted || deleted || denied",
       "timestampStatusChange": "string",
@@ -305,7 +305,7 @@ export const putUsersIdRes = {
 export const getOpportunitiesListRes = [
   {
     "id": 1,
-    "userId": 1,
+    "idUser": 1,
     "organization": "response",
     "opportunityType": "string",
     "offer": true,
@@ -325,7 +325,7 @@ export const getOpportunitiesListRes = [
 ];
 
 export const postOpportunities = {
-  "userId": 0,
+  "idUser": 0,
   "opportunityType": "request",
   "offer": true,
   "title": "string",
@@ -344,7 +344,7 @@ export const postOpportunities = {
 
 export const postOpportunitiesRes = {
   "id": 1,
-  "userId": 1,
+  "idUser": 1,
   "organization": "response",
   "opportunityType": "string",
   "offer": true,
@@ -364,7 +364,7 @@ export const postOpportunitiesRes = {
 
 export const getOpportunitiesIdRes = {
   "id": 1,
-  "userId": 1,
+  "idUser": 1,
   "organization": "response",
   "opportunityType": "string",
   "offer": true,
@@ -384,7 +384,7 @@ export const getOpportunitiesIdRes = {
     {
       "id": 0,
       "idOpportunity": 0,
-      "userId": 0,
+      "idUser": 0,
       "notes": "free-form text",
       "responseStatus": "offered || accepted || deleted || denied",
       "timestampStatusChange": "string",
@@ -399,7 +399,7 @@ export const getOpportunitiesIdRes = {
 
 export const putOpportunitiesId = {
   "id": 0,
-  "userId": 0,
+  "idUser": 0,
   "opportunityType": "request",
   "offer": true,
   "title": "string",
@@ -418,7 +418,7 @@ export const putOpportunitiesId = {
 
 export const putOpportunitiesIdRes = {
   "id": 1,
-  "userId": 1,
+  "idUser": 1,
   "opportunityType": "response",
   "organization": "string",
   "offer": true,
@@ -465,14 +465,14 @@ export const putRolesIdRes = {
 
 export const postResponses = {
   "idOpportunity": 0,
-  "userId": 0,
+  "idUser": 0,
   "notes": "request free-form text"
 };
 
 export const postResponsesRes = {
   "id": 1,
   "idOpportunity": 1,
-  "userId": 0,
+  "idUser": 0,
   "notes": "response free-form text",
   "responseStatus": "string",
   // "timestampStatusChange": "string",
@@ -486,7 +486,7 @@ export const postResponsesRes = {
 export const putResponsesId = {
   "id": 0,
   "idOpportunity": 0,
-  "userId": 0,
+  "idUser": 0,
   "notes": "request free-form text",
   "responseStatus": "offered || accepted || deleted || denied"
 };
@@ -494,7 +494,7 @@ export const putResponsesId = {
 export const putResponsesIdRes = {
   "id": 1,
   "idOpportunity": 1,
-  "userId": 1,
+  "idUser": 1,
   "notes": "response free-form text",
   "responseStatus": "offered || accepted || deleted || denied",
   // "timestampStatusChange": "string",

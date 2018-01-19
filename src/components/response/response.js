@@ -15,7 +15,7 @@ export class Response extends Component {
       hasResponded: this.props.response ? true : (
         this.props.user.responses[this.props.opportunity.id] ? true : false ),
       isMyOpp: this.props.response ? false : (
-        this.props.opportunity.userId === this.props.user.id ? true : false ),
+        this.props.opportunity.idUser === this.props.user.id ? true : false ),
       response: {},
       formStatus: 'positive',
       submitLabel: 'Confirm',
@@ -47,7 +47,7 @@ export class Response extends Component {
         response: {
           id: this.props.user.responses[this.state.oppId].id,
           idOpportunity: this.state.oppId,
-          userId: this.props.user.id,
+          idUser: this.props.user.id,
           notes: this.props.user.responses[this.state.oppId].notes,
           responseStatus: this.props.user.responses[this.state.oppId].responseStatus
         },
@@ -68,7 +68,7 @@ export class Response extends Component {
       this.setState({
         response: {
           idOpportunity: this.state.oppId,
-          userId: this.props.user.id,
+          idUser: this.props.user.id,
           notes: '',
           responseStatus: 'offered'
         }

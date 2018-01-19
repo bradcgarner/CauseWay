@@ -29,8 +29,8 @@ describe('reducer - display', () => {
   });
 
   it('Should toggle user in focus in state', () => {
-    const state = reducer(initialState, {type: actions.TOGGLE_USER, userId: 777});
-    expect(state.userId).toBe(777);    
+    const state = reducer(initialState, {type: actions.TOGGLE_USER, idUser: 777});
+    expect(state.idUser).toBe(777);    
   });
 
   it('Should toggle opportunity in focus in state', () => {

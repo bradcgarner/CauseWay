@@ -71,7 +71,7 @@ Two primary tables
     latestResponse    id of latest response (used as temporary container after response is created or edited)
     modal             boolean: modal showing or hidden
     modalMessage      message in modal; used to relay error messages to user
-    userId            id of user who is in focus (used to create reliable way to find this id)
+    idUser            id of user who is in focus (used to create reliable way to find this id)
     opportunityId     id of opportunity in focus (used to create reliable way to find this id)
   
   general             non-variable items; used for static value lists

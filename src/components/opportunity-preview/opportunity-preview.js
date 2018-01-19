@@ -28,7 +28,7 @@ export class OpportunityPreview extends Component {
     const causes = helpers.formatCausesIcon(opportunity.causes, opportunity);
 
     const isInFocus = this.props.display.idOpportunity === opportunity.id ? true : false ;
-    const isMyOpportunity = (opportunity.userId === this.props.user.id || this.props.self) ? true : false;
+    const isMyOpportunity = (opportunity.idUser === this.props.user.id || this.props.self) ? true : false;
     
     const displayNameTitle = isMyOpportunity ? <h3 className='previewCardTitle'>This is my event!</h3> : <h3 className='previewCardTitle'>{this.props.opportunity.organization}</h3>
     

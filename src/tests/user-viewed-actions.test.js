@@ -98,7 +98,7 @@ describe('actions - user viewed', () => {
       responses: {
         8: {
           id: 8,
-          id_opp: '',
+          id_opportunity: '',
           response_status: '',
           title: '',
         }

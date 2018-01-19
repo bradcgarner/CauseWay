@@ -18,7 +18,7 @@ export const reducer = (state = initialState, action) => {
     let modalMessage = 'Sorry, something went wrong';
     if (typeof action.modalMessage === 'string' ) {
       modalMessage = action.modalMessage;
-    } else if (typeof action.modalMessage === 'object') {
+    } else if (typeof action.modalMessage === 'object' && action.modalMessage !== null) {
       if (action.modalMessage.toString()) {
         modalMessage = action.modalMessage.toString();
       }

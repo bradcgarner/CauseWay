@@ -55,8 +55,8 @@ export class OpportunityCreate extends Component {
         textField={textField}
         onChange={input.onChange} />
 
-    const offerButtonClassName = this.state.offer ? 'selectedOptionLabel' : 'deSelectedOptionLabel' ;
-    const requestButtonClassName = this.state.offer ? 'deSelectedOptionLabel' : 'selectedOptionLabel' ;
+    const offerButtonClassName = this.state.offer ? 'selectedOptionLabel wideButton' : 'deSelectedOptionLabel wideButton' ;
+    const requestButtonClassName = this.state.offer ? 'deSelectedOptionLabel wideButton' : 'selectedOptionLabel wideButton' ;
 
     let start, end;
     if (this.props.opportunity.newTimestampStart) {
@@ -195,11 +195,11 @@ export class OpportunityCreate extends Component {
             </div>
 
             <div className='previewBottomBar'>
-              <button className='clearFormButton'
+              <button className='clearFormButton wideButton'
                 type="button" disabled={this.props.pristine || this.props.submitting}
                 onClick={this.props.reset}>Reset
               </button>
-              <button className='submitButton'
+              <button className='submitButton wideButton'
                 type="submit" disabled={this.props.pristine || this.props.submitting}>{submitLabel}
               </button>
             </div>

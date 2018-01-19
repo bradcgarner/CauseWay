@@ -6,7 +6,7 @@ import * as actionsUser from '../../actions/user';
 import IndivNameFields from '../fields/name-indiv';
 import OrgNameFields from '../fields/name-org';
 import UandPwFields from '../fields/u-and-pw';
-
+import { Link } from 'react-router-dom';
 import './register-page.css';
 
 export class RegisterPage extends Component {
@@ -63,6 +63,10 @@ export class RegisterPage extends Component {
             <button className='submitButton fullWidth' type='submit'>Sign Up</button>
           </div>
         </form>
+        
+        <div className='registerToLoginContainer fullWidth'>
+          <Link to='/login' className='grayButton registerToLogin fullWidth' >oops, I already have an account</Link>
+        </div>
       </main>
     );
   }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserEditGeneralForm from './user-profile-edit-general';
 import UserEditUandPwForm from './user-profile-edit-u-and-pw';
@@ -9,12 +8,9 @@ import './user-profile-edit.css';
 export class UserProfileEdit extends Component {
 
   render() {
-    const redirect = this.props.user.id ? null :
-     <Switch><Redirect from='*' to='/' /></Switch>
     
     return (
       <main>
-        {redirect}
         <h3 className='sectionTitle'>Edit Profile</h3>
         <div className='mainColumn'>
           <UserEditGeneralForm history={this.props.history}/>

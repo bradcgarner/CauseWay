@@ -1,10 +1,16 @@
-.registerForm {
+.registerForm, .registerToLoginContainer {
   padding: 5% 10%;
 }
 @media (min-width: 450px) {
-  .registerForm {
+  .registerForm, .registerToLoginContainer {
     padding: 10% 20%;
   }
+}
+.registerToLoginContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .registerForm .selectOptionButtonContainer {
   margin-bottom: 20px;
@@ -15,4 +21,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 15px;
+}
+.registerToLogin {
+  text-align: center;
 }

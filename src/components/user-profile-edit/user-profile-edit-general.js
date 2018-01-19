@@ -40,7 +40,6 @@ export class UserEditGeneralForm extends Component {
   }
 
   handleSubmitButton(input) {
-    // console.log('raw input',input)    
     const user = {...input, id: this.props.user.id};
     let links = [];
     let index = 0;
@@ -53,13 +52,11 @@ export class UserEditGeneralForm extends Component {
         delete user[`linkType${index}`];
         delete user[`linkUrl${index}`];
         index += 1;
-        // console.log(index, links)
       } else {
         index = 99;
       }
     }
     user.links = links;
-    // console.log('after fixing links', user)
     const isNew = false;
     this.props.dispatch(actionsUser.createOrEditUser(user, this.props.user.authToken, isNew))
       .then(() => {
@@ -156,11 +153,11 @@ export class UserEditGeneralForm extends Component {
 
 
         <div className='previewBottomBar'>
-          <button className='clearFormButton'
+          <button className='clearFormButton wideButton'
             type="button" disabled={this.props.pristine || this.props.submitting}
             onClick={this.props.reset}>Reset Form
           </button>
-          <button className='submitButton'
+          <button className='submitButton wideButton'
             type="submit" disabled={this.props.pristine || this.props.submitting}>Save
           </button>
 

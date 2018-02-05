@@ -112,3 +112,9 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+@media (max-width: 480px) {
+  .previewCard {
+    padding: 15px;
+  }
+}

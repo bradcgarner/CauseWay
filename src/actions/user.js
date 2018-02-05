@@ -2,6 +2,7 @@ import 'whatwg-fetch';
 import { REACT_APP_BASE_URL } from '../config'
 import * as actionsDisplay from './display';
 import * as actionsUserViewed from './user-viewed';
+import * as actionsUsersList from './users-list';
 import * as actionsOpportunity from './opportunity';
 import * as helpers from './helpers';
 import * as ck from './api-response-checks';
@@ -350,6 +351,9 @@ export const createOrEditRole = (role, roleType, authToken, roleNameFields) => d
     if ( roleType === 'admin' ) {
       // if (returnedRole.capabilities === 'admin') // vs 'delete'
       dispatch(loadAdmin(returnedRole, isNew));
+      const idAdmin = idUserReceiving || id;
+      console.log('idAdmin', idAdmin, idUserReceiving, id);
+      dispatch(actionsUsersList.subtractFromUsersList(idAdmin));
     } else {
       dispatch(loadFollowing(returnedRole, isNew));
     }

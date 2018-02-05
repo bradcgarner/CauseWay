@@ -11,6 +11,12 @@ export const loadUsersList = (array) => ({
   main: array
 });
 
+export const SUBTRACT_FROM_USERS_LIST = 'SUBTRACT_FROM_USERS_LIST';
+export const subtractFromUsersList = (id) => ({
+  type: SUBTRACT_FROM_USERS_LIST,
+  id
+});
+
 // @@@@@@@@@@@@@@@ ASYNC @@@@@@@@@@@@@@@@@
 
 export const fetchUsersList = (query, authToken) => dispatch => {

@@ -6,10 +6,15 @@ import {usersList as initialState} from './potential-states'
 
 export const reducer = (state = initialState, action) => {
   if (action.type === actions.LOAD_USERS_LIST) {
-    // console.log('load users list reducer')
     return {...state, main: action.main};
   }
-  
+
+  if (action.type === actions.SUBTRACT_FROM_USERS_LIST) {
+    console.log(action.id);
+    const main = state.main.filter(user=>user.id!==action.id);
+    return {...state, main};
+  }
+
   return state;
 
 }

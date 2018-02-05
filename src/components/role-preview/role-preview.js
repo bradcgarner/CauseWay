@@ -73,7 +73,7 @@ export class RolePreview extends Component {
       organization: this.state.role.organization,
     }
     const roleMessage = (this.props.roleType === 'admin' && formValues.capabilities === 'delete') ? 'admin role has been removed' : null ;
-
+    console.log('role', role);
     this.props.dispatch(actionsUser.createOrEditRole(role, this.props.roleType, this.props.userInState.authToken, nameFields))
     .then(()=>{
       if (!role.id && role.capabilities !== 'admin') { // new admins unmount before this occurs
@@ -102,6 +102,7 @@ export class RolePreview extends Component {
     const displayName = helpers.formatUserName(this.props.role);;
 
     let selector;
+    const roleTypes = this.props.userInState.admins[this.state.role.idUserReceiving] ? this.props.general.roleTypes : [ 'admin' ] ;
     
     if (this.props.roleType === 'following') {
       const capabilities = this.state.capabilities === 'following' ? 'delete' : 'following' ;
@@ -119,7 +120,7 @@ export class RolePreview extends Component {
           name='capabilities'
           id='capabilities'
           component={renderDropdownList}
-          data={this.props.general.roleTypes}
+          data={roleTypes}
           className='inputField roleInputField' />
         <button className='submitButton'
           type="submit" disabled={this.props.submitting}>Save

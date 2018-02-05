@@ -1,6 +1,5 @@
 import 'whatwg-fetch';
 import { REACT_APP_BASE_URL } from '../config'
-// import {SubmissionError} from 'redux-form';
 import  * as actionsDisplay from './display';
 import * as ck from './api-response-checks';
 
@@ -35,16 +34,13 @@ export const fetchUsersList = (query, authToken, excludedIds) => dispatch => {
     method: 'GET',
     headers,
   };
-  // console.log('init at users list',init)
   return fetch(url, init)    
     .then(res=>{
       return res.json();
     })
     .then(usersList=>{
-      console.log('usersList', usersList);
       ck.compareObjects(ck.getUsersListRes, usersList );
       const updatedUsersList = excludedIds ? usersList.filter(user=> !excludedIds.includes(user.id)) : usersList ;
-      console.log('updatedUsersList', updatedUsersList);
       dispatch(actionsDisplay.changeDisplayStatus('normal'));
       return dispatch(loadUsersList(updatedUsersList));      
     })

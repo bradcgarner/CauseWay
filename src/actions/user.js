@@ -300,10 +300,11 @@ export const createOrEditResponse = (origResponse, authToken, isNew = true) => d
 
 export const createOrEditRole = (role, roleType, authToken, roleNameFields) => dispatch => {
   // console.log('enter role', role, roleNameFields)
-
+  console.log('createOrEditRole',role);
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
 
-  const isNew = role.id ? false : true ;
+  const isNew = role.capabilities === 'admin' ? true :
+                role.id ? false : true ;
   const params = isNew ? '' : role.id ;
   const method = isNew ? 'POST' : 'PUT';
 

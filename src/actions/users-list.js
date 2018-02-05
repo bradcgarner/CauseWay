@@ -19,7 +19,7 @@ export const subtractFromUsersList = (id) => ({
 
 // @@@@@@@@@@@@@@@ ASYNC @@@@@@@@@@@@@@@@@
 
-export const fetchUsersList = (query, authToken) => dispatch => {
+export const fetchUsersList = (query, authToken, excludedIds) => dispatch => {
   
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
 
@@ -41,9 +41,12 @@ export const fetchUsersList = (query, authToken) => dispatch => {
       return res.json();
     })
     .then(usersList=>{
+      console.log('usersList', usersList);
       ck.compareObjects(ck.getUsersListRes, usersList );
+      const updatedUsersList = excludedIds ? usersList.filter(user=> !excludedIds.includes(user.id)) : usersList ;
+      console.log('updatedUsersList', updatedUsersList);
       dispatch(actionsDisplay.changeDisplayStatus('normal'));
-      return dispatch(loadUsersList(usersList));      
+      return dispatch(loadUsersList(updatedUsersList));      
     })
     .catch(error => {
       dispatch(actionsDisplay.changeDisplayStatus('normal'));

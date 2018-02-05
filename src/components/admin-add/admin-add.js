@@ -9,7 +9,12 @@ import * as actionsDisplay from '../../actions/display';
 export class AdminAdd extends Component {
 
   searchUsers(formValues) {
-    this.props.dispatch(actionsUsersList.fetchUsersList(formValues))
+    const existingAdmins = [];
+    for (let prop in this.props.userInState.admins) {
+      existingAdmins.push(prop);
+    }
+    const excludedIds = [this.props.userInState.id, ...existingAdmins];
+    this.props.dispatch(actionsUsersList.fetchUsersList(formValues, this.props.userInState.authToken, excludedIds))
     .then(()=>{
       this.props.dispatch(actionsDisplay.changeDisplay('addAdmin')) // using store as affects parent component
       window.scrollTo(0,this.state.searchBoxY -40)
@@ -45,7 +50,11 @@ export class AdminAdd extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  userInState: state.user
+})
+
 export default compose(
-  connect(),
+  connect(mapStateToProps),
   reduxForm({ form: 'adminAdd' })
 )(AdminAdd);

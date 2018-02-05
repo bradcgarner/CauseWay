@@ -26,7 +26,7 @@
   box-shadow: 7px 7px 7px -5px #999;
   z-index: 999;
   margin-top: 3px;
-  font-size: 12px;
+  font-size: 0.8em;
   text-align: left; 
 }
 .linkIcon .popover {

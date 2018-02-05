@@ -51,7 +51,7 @@ button:hover {
 .selectedOptionLabel, .deSelectedOptionLabel, .grayButton {
   padding: 5px;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 1em;
 }
 .selectedOptionLabel{
   background-color: #DA2536;

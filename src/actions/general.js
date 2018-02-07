@@ -2,6 +2,7 @@ import 'whatwg-fetch';
 import { REACT_APP_BASE_URL } from '../config'
 import * as actionsDisplay from './display';
 import * as actionsUsersList from './users-list';
+import * as actionsOpportunitiesList from './opportunities-list';
 import * as ck from './api-response-checks';
 
 // library of all causes, loads once only on app load
@@ -52,7 +53,12 @@ export const fetchInitialize = () => dispatch => {
     .then(res => {
       dispatch(flattenLocations())
       dispatch(actionsDisplay.changeDisplayStatus('normal'));
-      return dispatch(loadCauses(res.causes));
+      dispatch(loadCauses(res.causes));
+      return res;
+    })
+    .then(res => {
+      dispatch(actionsDisplay.changeDisplayStatus('normal'));
+      return dispatch(actionsOpportunitiesList.loadOpportunitiesList(res.opportunities));
     })
     .catch(error => {
       dispatch(actionsDisplay.changeDisplayStatus('normal'));

@@ -32,12 +32,16 @@ export class OpportunityCreate extends Component {
     opp.timestampStart = helpers.convertTimeStampToString(timestampStart);
     opp.timestampEnd = helpers.convertTimeStampToString(timestampEnd);
     opp.idUser = isNew ? this.props.user.id : opp.idUser;
-    this.props.dispatch(actionsOpportunity.createOpportunity(opp, this.props.user.authToken, isNew))
+    if(opp.timestampStart === '' || opp.timestampEnd === '') {
+      this.props.dispatch(actionsDisplay.toggleModal('please enter start and end dates/times'));
+    } else {
+      this.props.dispatch(actionsOpportunity.createOpportunity(opp, this.props.user.authToken, isNew))
       .then(() => {
         this.props.dispatch(actionsDisplay.setOpportunity(null));
         this.props.history.push('/opportunities');
         window.scrollTo(0, 0);
       });
+    }
   }
 
   render() {

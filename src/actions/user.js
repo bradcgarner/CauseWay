@@ -136,9 +136,8 @@ export const userAPICall = (url, init, body, callback) => dispatch => {
     return dispatch(actionsDisplay.changeDisplayStatus('normal'));
   })
   .catch(error => {
-    console.log('error',error);
     dispatch(actionsDisplay.changeDisplayStatus('normal'));
-    return dispatch(actionsDisplay.toggleModal('sorry, user not found'));
+    return dispatch(actionsDisplay.toggleModal(`sorry, user not found ${error}`));
   })
 }
 
@@ -168,7 +167,6 @@ export const fetchUser = (idUser, authToken, stateLocation = 'user', loadTo = 'u
 }
 
 export const login = user => dispatch => {
-  // console.log('user at login',{user})
 
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
   
@@ -192,7 +190,6 @@ export const login = user => dispatch => {
     originalUser: null,
     loadTo: 'loadUser',
   }
-  // console.log('login', url, init, userObject, callback);
   return dispatch(userAPICall(url, init, userObject, callback));
 }
 
@@ -230,7 +227,6 @@ export const createOrEditUser = (user, authToken, isNew = true, loadTo = 'update
     originalUser,
     loadTo,
   }
-  // console.log('login dispatch')
   return dispatch(userAPICall(url, init, user, callback));}
 
 // @@@@@@@@@@@@@@@ USER RESPONSES TO OPPORTUNITIES @@@@@@@@@@@@@@@@@
@@ -259,7 +255,6 @@ export const createOrEditResponse = (origResponse, authToken, isNew = true) => d
     body: JSON.stringify(newResponse),
     headers
   };
-  // console.log('init', init)
   if (init.method === 'GET') { } 
   else if (init.method === 'POST') { ck.compareObjects(ck.postResponses, newResponse) } 
   else if (init.method === 'PUT') { ck.compareObjects(ck.putResponsesId, newResponse) }
@@ -273,7 +268,6 @@ export const createOrEditResponse = (origResponse, authToken, isNew = true) => d
     return res.json();
   }) 
   .then(returnedResponse => { 
-    // console.log('response', returnedResponse);
     if (init.method === 'GET') { } 
     else if (init.method === 'POST') { ck.compareObjects(ck.postResponsesRes, returnedResponse) } 
     else if (init.method === 'PUT') { ck.compareObjects(ck.putResponsesIdRes, returnedResponse) }
@@ -299,8 +293,7 @@ export const createOrEditResponse = (origResponse, authToken, isNew = true) => d
 // @@@@@@@@@@@@@@@ ROLES @@@@@@@@@@@@@@@@@
 
 export const createOrEditRole = (role, roleType, authToken, roleNameFields) => dispatch => {
-  // console.log('enter role', role, roleNameFields)
-  console.log('createOrEditRole',role);
+
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
 
   const isNew = role.capabilities === 'admin' ? true :
@@ -314,6 +307,7 @@ export const createOrEditRole = (role, roleType, authToken, roleNameFields) => d
     Authorization: `Bearer ${authToken}`
   };
   const {id, idUserAdding, idUserReceiving, capabilities} = role; // send back only keys that server expects
+  console.log('idUserReceiving',idUserReceiving);
   const newRole = {id, idUserAdding, idUserReceiving, capabilities};
   if(isNew) delete newRole.id;
 
@@ -326,11 +320,9 @@ export const createOrEditRole = (role, roleType, authToken, roleNameFields) => d
   if (init.method === 'GET') { } 
   else if (init.method === 'POST') { ck.compareObjects(ck.postRoles, role) } 
   else if (init.method === 'PUT') { ck.compareObjects(ck.putRolesId, role) }
-  // console.log('role before fetch', url, init)
 
   return fetch(url, init)
   .then(res=>{ 
-    // console.log('role res',res);
     if (!res.ok) { 
       dispatch(actionsDisplay.toggleModal('Sorry, couldn\'t process that role'));
       return Promise.reject(res.statusText);
@@ -338,22 +330,21 @@ export const createOrEditRole = (role, roleType, authToken, roleNameFields) => d
     return res.json();
   }) 
   .then(rawReturnedRole => { 
-    // console.log('returnedRole', rawReturnedRole)
+    console.log('rawReturnedRole',rawReturnedRole)
     if (init.method === 'GET') { } 
     else if (init.method === 'POST') { ck.compareObjects(ck.postRolesRes, rawReturnedRole) } 
     else if (init.method === 'PUT') { ck.compareObjects(ck.putRolesIdRes, rawReturnedRole) }
     
     let returnedRole = {...rawReturnedRole, ...roleNameFields}; // server isn't sending back name, organization, etc., so we hold on, and add them back here
+    console.log('returnedRole',returnedRole)
 
     if (rawReturnedRole.message === 'Role deleted') {
         returnedRole = {...role, ...roleNameFields};
     }
-    // console.log('returnedRole hydrated',returnedRole)
     if ( roleType === 'admin' ) {
-      // if (returnedRole.capabilities === 'admin') // vs 'delete'
+      console.log('admin')
       dispatch(loadAdmin(returnedRole, isNew));
       const idAdmin = idUserReceiving || id;
-      console.log('idAdmin', idAdmin, idUserReceiving, id);
       dispatch(actionsUsersList.subtractFromUsersList(idAdmin));
     } else {
       dispatch(loadFollowing(returnedRole, isNew));

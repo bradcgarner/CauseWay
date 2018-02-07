@@ -95,13 +95,14 @@ export class Response extends Component {
     const responseStatus = this.state.formStatus === 'positive' ? this.state.positiveResponse : this.state.negativeResponse ;
     const newResponse = {...this.state.response, notes: formValues.notes, responseStatus};
     const isNew = false;
-    this.props.dispatch(actionsUser.createOrEditResponse(newResponse, this.props.user.authToken, isNew))
-      .then(() => {
-        this.props.dispatch(actionsDisplay.toggleOpportunity(null));
-        this.setState({
-          response: newResponse,
-        });      
-      });
+    // do this before dispatching, before component unmounts (which happens if status is 'delete')
+    this.setState({
+      response: newResponse,
+    }); 
+    // response is no longer in focus
+    this.props.dispatch(actionsDisplay.toggleOpportunity(null));
+    // if deleted, this will remove the response from the list
+    this.props.dispatch(actionsUser.createOrEditResponse(newResponse, this.props.user.authToken, isNew));
   }
 
   handleFormStatusChange(formStatus) { // form captures actual value on submission; this step just filters values by positive and negative to change formatting in the UI

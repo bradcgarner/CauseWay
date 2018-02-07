@@ -45,7 +45,7 @@
   text-decoration: none;
   color: #222;
   margin-top: 5px;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 .oppTimeframe {
   margin-bottom: 0;
@@ -89,7 +89,7 @@
 }
 .causeIcon, .skillIcon {
   list-style: none;
-  font-size: 12px;
+  font-size: 0.9em;
   display: flex;
   padding: 5px 7px;
   border-radius: 5px;
@@ -111,4 +111,10 @@
 .selectAdmin .rw-widget {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+@media (max-width: 480px) {
+  .previewCard {
+    padding: 15px;
+  }
 }

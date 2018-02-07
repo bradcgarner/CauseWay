@@ -1,7 +1,7 @@
 .siteName {
   text-align: center;
   font-weight: 800;
-  font-size: 30px;  
+  font-size: 2em;  
 }
 .landingPage h2 {
   text-align: center;
@@ -10,6 +10,9 @@
 .landingPage .appDescription {
   margin-bottom: 25px;
   text-align: justify;
+}
+.appDescription ul {
+  padding: 0;
 }
 .appDescription li {
   list-style: none;
@@ -29,7 +32,7 @@
   cursor: pointer;
 }
 .liEmphasis {
-  font-size: 18px;
+  font-size: 1.1em;
   font-weight: bold;
   font-style: italic;
 }

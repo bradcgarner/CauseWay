@@ -10,8 +10,8 @@
   min-width: 320px;
 }
 main { /* set width here!*/
-  margin-top: 50px;
-  width: 90%;
+  margin-top: 40px;
+  width: 95%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

@@ -65,17 +65,17 @@ export const compareObjects = (expected, received) => {
   compare(expected, received, 1);
 
   if (message.length > 0) {
-    console.log('***', message);
-    console.log('***');
-    console.log('*** expected');
-    console.log('***', expected);
-    console.log('*** received');
-    console.log('***', received);
-    console.log('************');
+    // console.log('***', message);
+    // console.log('***');
+    // console.log('*** expected');
+    // console.log('***', expected);
+    // console.log('*** received');
+    // console.log('***', received);
+    // console.log('************');
     return message;
   } 
   message = 'A-OK!' ;
-  console.log(message);
+  // console.log(message);
   return message;
 
 };

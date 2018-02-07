@@ -83,7 +83,7 @@ export class RolePreview extends Component {
       locationState: this.state.role.locationState,
     }
     const roleMessage = (this.props.roleType === 'admin' && formValues.capabilities === 'delete') ? 'admin role has been removed' : null ;
-    console.log('role', role);
+    // console.log('role', role);
     const roleType = this.props.roleType === 'adminSearch' ? 'admin' : this.props.roleType ;
     if (!role.id && role.capabilities !== 'admin') { // new admins unmount before this occurs
       // if no id, role is new, get id from store (put there by fetch upon create)

@@ -307,7 +307,7 @@ export const createOrEditRole = (role, roleType, authToken, roleNameFields) => d
     Authorization: `Bearer ${authToken}`
   };
   const {id, idUserAdding, idUserReceiving, capabilities} = role; // send back only keys that server expects
-  console.log('idUserReceiving',idUserReceiving);
+  // console.log('idUserReceiving',idUserReceiving);
   const newRole = {id, idUserAdding, idUserReceiving, capabilities};
   if(isNew) delete newRole.id;
 
@@ -330,19 +330,19 @@ export const createOrEditRole = (role, roleType, authToken, roleNameFields) => d
     return res.json();
   }) 
   .then(rawReturnedRole => { 
-    console.log('rawReturnedRole',rawReturnedRole)
+    // console.log('rawReturnedRole',rawReturnedRole)
     if (init.method === 'GET') { } 
     else if (init.method === 'POST') { ck.compareObjects(ck.postRolesRes, rawReturnedRole) } 
     else if (init.method === 'PUT') { ck.compareObjects(ck.putRolesIdRes, rawReturnedRole) }
     
     let returnedRole = {...rawReturnedRole, ...roleNameFields}; // server isn't sending back name, organization, etc., so we hold on, and add them back here
-    console.log('returnedRole',returnedRole)
+    // console.log('returnedRole',returnedRole)
 
     if (rawReturnedRole.message === 'Role deleted') {
         returnedRole = {...role, ...roleNameFields};
     }
     if ( roleType === 'admin' ) {
-      console.log('admin')
+      // console.log('admin')
       dispatch(loadAdmin(returnedRole, isNew));
       const idAdmin = idUserReceiving || id;
       dispatch(actionsUsersList.subtractFromUsersList(idAdmin));

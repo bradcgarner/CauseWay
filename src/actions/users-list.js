@@ -39,7 +39,7 @@ export const fetchUsersList = (query, authToken, excludedIds) => dispatch => {
       return res.json();
     })
     .then(usersList=>{
-      console.log('usersList',usersList)
+      // console.log('usersList',usersList)
       ck.compareObjects(ck.getUsersListRes, usersList );
       const updatedUsersList = excludedIds ? usersList.filter(user=> !excludedIds.includes(user.id)) : usersList ;
       dispatch(actionsDisplay.changeDisplayStatus('normal'));

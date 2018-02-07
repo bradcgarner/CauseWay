@@ -22,7 +22,7 @@ export class Acceptance extends Component {
   }
 
   handleSubmit(values){
-    console.log('submitting');
+    // console.log('submitting');
     const responseStatus = this.state.accepted ?'accepted' : 'denied' ;
     const newResponse = {...this.props.response, responseStatus};
     const isNew = false;

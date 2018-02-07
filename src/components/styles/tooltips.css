@@ -26,7 +26,7 @@
   box-shadow: 7px 7px 7px -5px #999;
   z-index: 999;
   margin-top: 3px;
-  font-size: 0.8em;
+  font-size: 12px; /* Ben, did you make this 0.8em? it was overflowing */
   text-align: left; 
 }
 .linkIcon .popover {
@@ -49,6 +49,7 @@
   margin-bottom: 0;
   width: 100%;
   overflow-wrap: break-word;
+  font-size: 12px;
 }
 .editPencil:hover .popover,
 .tooltip:hover .popover {

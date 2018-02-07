@@ -56,6 +56,7 @@ export class RolePreview extends Component {
   }
 
   goToUser() {
+    if (this.props.roleType === 'adminSearch') return;
     this.props.dispatch(actionsUser.fetchUser(
       this.state.role.idUserReceiving,
       this.props.userInState.authToken,

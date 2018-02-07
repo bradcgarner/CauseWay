@@ -19,7 +19,6 @@ export class DateTime extends Component {
   render() {
     const fieldName = this.props.type === 'start' ? 'timestampStart' : 'timestampEnd' ;
     const fieldLabel = this.props.type === 'start' ? 'Start' : 'End' ;
-
     Moment.locale('en');
     momentLocalizer();
     const renderDateTimePicker = ({ input: { onChange, value }, showTime }) =>
@@ -35,10 +34,11 @@ export class DateTime extends Component {
           htmlFor={fieldName}>{fieldLabel}
         </label>
         <Field
-          name={fieldName}
-          id={fieldName}
-          component={renderDateTimePicker}
-          className='inputField' />
+        name={fieldName}
+        id={fieldName}
+        component={renderDateTimePicker}
+        className='inputField' 
+        required />
       </div>
     );
   }

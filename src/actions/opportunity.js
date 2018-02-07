@@ -110,17 +110,14 @@ export const oppAPICall = (url, init, body) => dispatch => {
     return opp.json();
   }) 
   .then(opportunity=>{
-    
     const timestampStart = opportunity.timestampStart ? helpers.convertStringToTimeStamp(opportunity.timestampStart) : {} ;
     const timestampEnd = opportunity.timestampEnd ? helpers.convertStringToTimeStamp(opportunity.timestampEnd) : {} ;
     const responses = Array.isArray(opportunity.responses) ? helpers.arrayToObject(opportunity.responses, 'id') : [] ;
-
     if (init.method === 'GET') { ck.compareObjects(ck.getOpportunitiesIdRes, opportunity) } 
     else if (init.method === 'POST') { ck.compareObjects(ck.postOpportunitiesRes, opportunity) } 
     else if (init.method === 'PUT') { ck.compareObjects(ck.putOpportunitiesIdRes, opportunity) }
-    
-    const updatedOpportunity = {...opportunity, timestampStart, timestampEnd, responses};
 
+    const updatedOpportunity = {...opportunity, timestampStart, timestampEnd, responses};
     if (init.method === 'POST') {
       dispatch(actionsOpportunitiesList.prependOpportunitiesList(updatedOpportunity));  
       dispatch(actionsUser.loadUserOpportunity(updatedOpportunity));  
@@ -154,9 +151,6 @@ export const fetchOpp = (oppId, authToken) => dispatch => {
 
 export const createOpportunity = (opportunity, authToken, isNew) => dispatch => {
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
-  if (isNew) delete opportunity.id;
-  // DELETE WHEN DB ACCEPTS LOGO
-  delete opportunity.logo;
   const params = isNew ? '' : `/${opportunity.id}` ;
   const method = isNew ? 'POST' : 'PUT' ;
 
@@ -170,5 +164,7 @@ export const createOpportunity = (opportunity, authToken, isNew) => dispatch => 
     body: JSON.stringify(opportunity),
     headers
   };
+  dispatch(updateStartDate(''));  
+  dispatch(updateEndDate(''));  
   return dispatch(oppAPICall(url, init, opportunity));  
 }

@@ -10,6 +10,8 @@ import './opportunities-page.css';
 export class OpportunitiesPage extends Component {
 
   createOpportunity(){
+    this.props.dispatch(actionsOpportunity.updateStartDate(''));  
+    this.props.dispatch(actionsOpportunity.updateEndDate(''));  
     this.props.dispatch(actionsOpportunity.loadOpportunity({}));
     this.props.history.push('/opportunities/create');
   }

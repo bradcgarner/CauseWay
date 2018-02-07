@@ -329,7 +329,7 @@ export const postOpportunities = {
   "opportunityType": "request",
   "offer": true,
   "title": "string",
-  // "logo":"http://mylogo.com"
+  "logo":"http://mylogo.com",
   "narrative": "string",
   "timestampStart": "string",
   "timestampEnd": "string",
@@ -353,10 +353,10 @@ export const postOpportunitiesRes = {
   "narrative": "string",
   "timestampStart": "string",
   "timestampEnd": "string",
-  "locationCity": "string",
-  "locationState": "string",
-  "locationCountry": "string",
-  "link": "string",
+  // "locationCity": "string",
+  // "locationState": "string",
+  // "locationCountry": "string",
+  // "link": "string",
   "causes": [
     "string"
   ]
@@ -369,7 +369,7 @@ export const getOpportunitiesIdRes = {
   "opportunityType": "string",
   "offer": true,
   "title": "string",
-  // "logo":"http://mylogo.com"
+  "logo":"http://mylogo.com",
   "narrative": "string",
   "timestampStart": "string",
   "timestampEnd": "string",
@@ -392,7 +392,7 @@ export const getOpportunitiesIdRes = {
       "organization": "SQL Join at response",
       "firstName": "SQL Join at response",
       "lastName": "SQL Join at response",
-      // "title": "SQL Join at response"
+      "title": "SQL Join at response"
     }
   ]
 };
@@ -403,7 +403,7 @@ export const putOpportunitiesId = {
   "opportunityType": "request",
   "offer": true,
   "title": "string",
-  // "logo":"http://mylogo.com"
+  "logo":"http://mylogo.com",
   "narrative": "string",
   "timestampStart": "string",
   "timestampEnd": "string",
@@ -423,7 +423,7 @@ export const putOpportunitiesIdRes = {
   "organization": "string",
   "offer": true,
   "title": "string",
-  // "logo": "string",
+  "logo": "string",
   "narrative": "string",
   "timestampStart": "string",
   "timestampEnd": "string",
@@ -473,7 +473,7 @@ export const postResponsesRes = {
   "id": 1,
   "idOpportunity": 1,
   "idUser": 0,
-  "notes": "response free-form text",
+  // "notes": "response free-form text",
   "responseStatus": "string",
   // "timestampStatusChange": "string",
   // "timestampCreated": "string",

@@ -13,6 +13,8 @@ import * as helpers from '../../actions/helpers';
 export class UserProfile extends Component {
 
   createOpportunity() {
+    this.props.dispatch(actionsOpportunity.updateStartDate(''));  
+    this.props.dispatch(actionsOpportunity.updateEndDate(''));  
     this.props.dispatch(actionsOpportunity.loadOpportunity({}));
     this.props.history.push('/opportunities/create');
     window.scrollTo(0, 0);
@@ -157,7 +159,7 @@ export class UserProfile extends Component {
       if (Array.isArray(this.props.usersList.main)) {
         this.props.usersList.main.forEach((user, index) => {
           if (!(this.props.user.admins[user.id])) {
-            userSearchPreviews.push(<RolePreview role={user} roleType='admin' key={index} index={index + 100} history={this.props.history} />)
+            userSearchPreviews.push(<RolePreview role={user} roleType='adminSearch' key={index} index={index + 100} history={this.props.history} />)
           }
         })
       }

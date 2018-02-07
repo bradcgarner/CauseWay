@@ -10,7 +10,8 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === actions.PREPEND_OPPORTUNITIES_LIST) {
-    const opps = [action.opp, ...state.main]
+    const main = state.main ? state.main : [] ;
+    const opps = [action.opp, ...main]
     return {...state, main: opps };
   }
 

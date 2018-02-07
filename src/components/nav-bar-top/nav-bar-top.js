@@ -9,7 +9,6 @@ import * as actionsDisplay from '../../actions/display';
 export class NavBarTop extends Component {
 
   listOpportunities(query) {
-    // console.log('list opps query', query)
     this.props.dispatch(actionsOpportunitiesList.fetchOppsList(query, this.props.user.authToken))
       .then(() => {
         this.props.history.push('/opportunities');
@@ -44,7 +43,7 @@ export class NavBarTop extends Component {
           type="text"
           component="input"
           id="userInput"
-          name="title"
+          name="opp"
         />
         <button type="submit" className="searchBarSubmitButton">
           <i className="fa fa-search tooltip" aria-hidden="true">

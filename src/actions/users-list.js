@@ -1,6 +1,5 @@
 import 'whatwg-fetch';
 import { REACT_APP_BASE_URL } from '../config'
-// import {SubmissionError} from 'redux-form';
 import  * as actionsDisplay from './display';
 import * as ck from './api-response-checks';
 
@@ -11,9 +10,15 @@ export const loadUsersList = (array) => ({
   main: array
 });
 
+export const SUBTRACT_FROM_USERS_LIST = 'SUBTRACT_FROM_USERS_LIST';
+export const subtractFromUsersList = (id) => ({
+  type: SUBTRACT_FROM_USERS_LIST,
+  id
+});
+
 // @@@@@@@@@@@@@@@ ASYNC @@@@@@@@@@@@@@@@@
 
-export const fetchUsersList = (query, authToken) => dispatch => {
+export const fetchUsersList = (query, authToken, excludedIds) => dispatch => {
   
   dispatch(actionsDisplay.changeDisplayStatus('loading'));
 
@@ -29,15 +34,16 @@ export const fetchUsersList = (query, authToken) => dispatch => {
     method: 'GET',
     headers,
   };
-  // console.log('init at users list',init)
   return fetch(url, init)    
     .then(res=>{
       return res.json();
     })
     .then(usersList=>{
+      console.log('usersList',usersList)
       ck.compareObjects(ck.getUsersListRes, usersList );
+      const updatedUsersList = excludedIds ? usersList.filter(user=> !excludedIds.includes(user.id)) : usersList ;
       dispatch(actionsDisplay.changeDisplayStatus('normal'));
-      return dispatch(loadUsersList(usersList));      
+      return dispatch(loadUsersList(updatedUsersList));      
     })
     .catch(error => {
       dispatch(actionsDisplay.changeDisplayStatus('normal'));

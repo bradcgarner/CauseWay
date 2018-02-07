@@ -81,6 +81,7 @@ export const reducer = (state = initialState, action) => {
 
   if (action.type === actions.LOAD_ADMIN) {
     const newAdmins = {...state.admins, [action.admin.idUserReceiving]: action.admin}
+    console.log('newAdmins',newAdmins);
     return {...state, admins: newAdmins };
   }
 

@@ -13,9 +13,17 @@ export class RolePreview extends Component {
     let role;
     let capabilities;
     let idRole;
+
+    // EXISTING roleType: adminOf, following, admin
+    // POTENTIAL roleType: adminSearch
+
     if(this.props.role){
-      role = this.props.role;
-      idRole = this.props.role.id;
+      role = this.props.roleType === 'adminSearch' ?
+        {...this.props.role, idUserReceiving: this.props.role.id} :
+        this.props.role ;
+      idRole = this.props.roleType === 'adminSearch' ?
+        `u${this.props.index}` :
+        this.props.role.id;
       capabilities = this.props.role.capabilities || this.props.roleType;
     } else if (this.props.user) {
       role = {
@@ -71,19 +79,21 @@ export class RolePreview extends Component {
       firstName: this.state.role.firstName,
       lastName: this.state.role.lastName,
       organization: this.state.role.organization,
+      locationCity: this.state.role.locationCity,
+      locationState: this.state.role.locationState,
     }
     const roleMessage = (this.props.roleType === 'admin' && formValues.capabilities === 'delete') ? 'admin role has been removed' : null ;
+    console.log('role', role);
+    const roleType = this.props.roleType === 'adminSearch' ? 'admin' : this.props.roleType ;
+    if (!role.id && role.capabilities !== 'admin') { // new admins unmount before this occurs
+      // if no id, role is new, get id from store (put there by fetch upon create)
+      this.setState({capabilities: role.capabilities, roleMessage, id: this.props.display.latestRole})
+    } else {
+      this.setState({capabilities: role.capabilities, roleMessage})
+    }
+    this.selectRole(null, null);
+    this.props.dispatch(actionsUser.createOrEditRole(role, roleType, this.props.userInState.authToken, nameFields))
 
-    this.props.dispatch(actionsUser.createOrEditRole(role, this.props.roleType, this.props.userInState.authToken, nameFields))
-    .then(()=>{
-      if (!role.id && role.capabilities !== 'admin') { // new admins unmount before this occurs
-        // if no id, role is new, get id from store (put there by fetch upon create)
-        this.setState({capabilities: role.capabilities, roleMessage, id: this.props.display.latestRole})
-      } else {
-        this.setState({capabilities: role.capabilities, roleMessage})
-      }
-      this.selectRole(null, null);
-    })
   }
 
   render() {
@@ -102,12 +112,13 @@ export class RolePreview extends Component {
     const displayName = helpers.formatUserName(this.props.role);;
 
     let selector;
+    const roleTypes = this.props.userInState.admins[this.state.role.idUserReceiving] ? this.props.general.roleTypes : [ 'admin' ] ;
     
     if (this.props.roleType === 'following') {
       const capabilities = this.state.capabilities === 'following' ? 'delete' : 'following' ;
       const followButtonLabel = this.state.capabilities === 'following' ? 'un-Follow' : 'Follow' ;
       selector = <button className='followButton' onClick={()=>this.setRole(capabilities)}>{followButtonLabel}</button>
-    } else if (this.props.roleType === 'admin'  && isInFocus) {
+    } else if (this.props.roleType.includes('admin') && isInFocus) {
       selector = <form className='selectAdmin'
         onSubmit={this.props.handleSubmit((values) => this.setRole(values))}>
         {/* <p>{this.state.role.firstName} {this.state.role.lastName} {this.state.role.organization}</p> */}
@@ -119,7 +130,7 @@ export class RolePreview extends Component {
           name='capabilities'
           id='capabilities'
           component={renderDropdownList}
-          data={this.props.general.roleTypes}
+          data={roleTypes}
           className='inputField roleInputField' />
         <button className='submitButton'
           type="submit" disabled={this.props.submitting}>Save
